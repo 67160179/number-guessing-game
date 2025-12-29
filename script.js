@@ -1,5 +1,4 @@
 // filepath: script.js
-// ...existing code...
 // เพิ่มการรองรับ Enter key
 document.addEventListener("DOMContentLoaded", function () {
   document
