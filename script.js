@@ -13,13 +13,13 @@ function initializeGame() {
     updateDisplay();
 }
 
-// ฟังก์ชันตรวจสอบการทาย 
+// ฟังก์ชันตรวจสอบการทาย
 function checkGuess() {
     const guessInput = document.getElementById("guessInput");
     const guessValue = parseInt(guessInput.value);
     const resultContainer = document.getElementById("resultContainer");
 
-    // Validation: ตรวจสอบว่าใส่ตัวเลขหรือไม่ 
+    // Validation: ตรวจสอบว่าใส่ตัวเลขหรือไม่
     if (isNaN(guessValue) || guessInput.value === "") {
         resultContainer.innerHTML = ` 
             <div class="alert alert-danger" role="alert"> 
@@ -29,7 +29,7 @@ function checkGuess() {
         return;
     }
 
-    // Validation: ตรวจสอบว่าอยู่ในช่วง 1-100 หรือไม่ 
+    // Validation: ตรวจสอบว่าอยู่ในช่วง 1-100 หรือไม่
     if (guessValue < 1 || guessValue > 100) {
         resultContainer.innerHTML = ` 
             <div class="alert alert-danger" role="alert"> 
