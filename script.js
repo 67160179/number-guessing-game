@@ -3,7 +3,7 @@
 // ตัวแปรเก็บตัวเลขลับ
 let secretNumber = 0;
 
-// ตัวแปรนับจํานวนครั ้งที ่ทาย
+// ตัวแปรนับจำนวนครั้งที่ทาย
 let attemptCount = 0;
 
 // ฟังก์ชันเริ่มเกมใหม่
@@ -12,7 +12,6 @@ function initializeGame() {
     attemptCount = 0;
     updateDisplay();
 }
-
 
 // ฟังก์ชันตรวจสอบการทาย 
 function checkGuess() {
@@ -30,7 +29,7 @@ function checkGuess() {
         return;
     }
 
-    // Validation: ตรวจสอบว่าอยู ่ในช่วง 1-100 หรือไม่ 
+    // Validation: ตรวจสอบว่าอยู่ในช่วง 1-100 หรือไม่ 
     if (guessValue < 1 || guessValue > 100) {
         resultContainer.innerHTML = ` 
             <div class="alert alert-danger" role="alert"> 
@@ -40,13 +39,15 @@ function checkGuess() {
         return;
     }
 
+    // เพิ่มจำนวนครั้งที่ทายหลังจากตรวจสอบข้อมูลถูกต้องแล้ว
     attemptCount++;
 
+    // ตรวจสอบเงื่อนไขการชนะหรือคำใบ้
     if (guessValue === secretNumber) {
         resultContainer.innerHTML = ` 
             <div class="alert alert-success" role="alert"> 
                 <h5>✓ ถูกต้อง!</h5> 
-                <p>คุณทายถูกในครั ้งที ่ ${attemptCount}</p> 
+                <p>คุณทายถูกในครั้งที่ ${attemptCount}</p> 
             </div> 
         `;
     } else if (guessValue > secretNumber) {
@@ -58,27 +59,26 @@ function checkGuess() {
     } else {
         resultContainer.innerHTML = ` 
             <div class="alert alert-info" role="alert"> 
-                ↑ ตัวเลขตํ ่าไป 
+                ↑ ตัวเลขต่ำไป 
             </div> 
         `;
     }
 
+    // อัปเดตการแสดงผลและล้างช่องกรอกข้อมูล
     updateDisplay();
     guessInput.value = "";
     guessInput.focus();
-}
+} // จบฟังก์ชัน checkGuess
 
-// ...existing code... 
-
-
-
-// ฟังก์ชันอัปเดตจํานวนครั ้ง
+// ฟังก์ชันอัปเดตจำนวนครั้ง
 function updateDisplay() {
     const attemptsContainer = document.getElementById("attemptsContainer");
-    attemptsContainer.textContent = `ทายแล้ว: ${attemptCount} ครัง`;
+    if (attemptsContainer) {
+        attemptsContainer.textContent = `ทายแล้ว: ${attemptCount} ครั้ง`;
+    }
 }
 
-// ฟังก์ชันเริ่มเกมใหม่
+// ฟังก์ชันเริ่มเกมใหม่ (Reset)
 function resetGame() {
     initializeGame();
     document.getElementById("resultContainer").innerHTML = "";
@@ -86,5 +86,5 @@ function resetGame() {
     document.getElementById("guessInput").focus();
 }
 
-// เริ่มเกมเมื ่อโหลดหน้า
+// เริ่มเกมเมื่อโหลดหน้าเว็บ
 window.addEventListener("load", initializeGame);
